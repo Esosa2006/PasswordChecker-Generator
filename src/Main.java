@@ -1,16 +1,13 @@
 import Tools.PasswordStrengthChecker;
+import Tools.RandomPasswordGenerator;
 import entities.User;
 import entities.Users;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public void askUser(){
-
-    }
     public static void main(String[] args) {
         Users users = new Users();
         Scanner scanner = new Scanner(System.in);
@@ -65,9 +62,27 @@ public class Main {
                 }
             }
             else if (user_input == 3){
-
+                System.out.println("What is the length of your password: ");
+                int length = scanner.nextInt();
+                RandomPasswordGenerator randomPasswordGenerator = new RandomPasswordGenerator();
+                randomPasswordGenerator.setPasswordLength(length);
+                randomPasswordGenerator.generatePassword();
+                String password = randomPasswordGenerator.getPassword();
+                System.out.println("New password: " + password);
             }
-
+            else if (user_input == 4){
+                System.out.println("Thank you for using this system!");
+                break;
+            }
+            else{
+                System.out.println("Enter a valid output: ");
+            }
+            System.out.println("Is there anything else you'd like to do: ");
+            System.out.println("1. Register");
+            System.out.println("2. Check password strength");
+            System.out.println("3. Generate password");
+            System.out.println("4. Quit");
+            user_input = scanner.nextInt();
         }
     }
 }

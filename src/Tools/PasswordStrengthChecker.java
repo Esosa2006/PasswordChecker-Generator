@@ -41,21 +41,13 @@ public class PasswordStrengthChecker {
     }
 
     public boolean checkIfNumber(char character) {
-        boolean isDigit = false;
-        int[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int number : numbers) {
-            if (character == number) {
-                isDigit = true;
-                break;
-            }
-        }
-        return isDigit;
+        return character >= '0' && character <= '9';
     }
 
     public void checkIfMixed(){
         int caseMixedCount = 0;
         int numberMixedCount = 0;
-        for (int i = 0; i < password.length() + 1; i++) {
+        for (int i = 0; i < password.length() - 1; i++) {
             String firstCharacter = String.valueOf(password.charAt(i));
             String secondCharacter = String.valueOf(password.charAt(i + 1));
             if (!checkIfUppercase(firstCharacter) && checkIfUppercase(secondCharacter)) {
@@ -88,9 +80,7 @@ public class PasswordStrengthChecker {
                 if (character == passwordToCharacter) {
                     symbolCount++;
                     this.hasSymbols = true;
-                }
-                else {
-                    this.hasSymbols = false;
+                    break;
                 }
             }
         }
@@ -98,7 +88,7 @@ public class PasswordStrengthChecker {
             this.hasEnoughSymbols = true;
         }
     }
-    public void containsPersonalInfo(){
+    public void checkForPersonalInfo(){
         if (password.contains(user.getFirst_name()) || password.contains(user.getLast_name())){
             this.containsPersonalInfo = true;
         }
@@ -122,14 +112,14 @@ public class PasswordStrengthChecker {
         }
     }
 
-    public void getPasswordStrength(){
-        System.out.println(passwordStrength);
+    public Strength getPasswordStrength(){
+        return passwordStrength;
     }
 
     public void verify(){
         checkLength();
         checkIfMixed();
-        containsPersonalInfo();
+        checkForPersonalInfo();
         containsSymbols();
 
         int score = 0;
