@@ -21,7 +21,7 @@ public class PasswordStrengthChecker {
         this.user = user;
     }
 
-    public void checkLength(){
+    private void checkLength(){
         if(password.length() <= 6){
             this.isLong = false;
             this.isMediumLength = false;
@@ -35,16 +35,16 @@ public class PasswordStrengthChecker {
         }
     }
 
-    public boolean checkIfUppercase(String letter){
+    private boolean checkIfUppercase(String letter){
         String uppercaseVersion = letter.toUpperCase();
         return letter.equals(uppercaseVersion);
     }
 
-    public boolean checkIfNumber(char character) {
+    private boolean checkIfNumber(char character) {
         return character >= '0' && character <= '9';
     }
 
-    public void checkIfMixed(){
+    private void checkIfMixed(){
         int caseMixedCount = 0;
         int numberMixedCount = 0;
         for (int i = 0; i < password.length() - 1; i++) {
@@ -71,7 +71,7 @@ public class PasswordStrengthChecker {
             this.isMixed = true;
         }
     }
-    public void containsSymbols(){
+    private void containsSymbols(){
         int symbolCount = 0;
         char[] password_to_characters = password.toCharArray();
         char[] symbols = {'~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ';', ':', '"', '>', '<', ',', '.', '?', '/'};
@@ -88,7 +88,7 @@ public class PasswordStrengthChecker {
             this.hasEnoughSymbols = true;
         }
     }
-    public void checkForPersonalInfo(){
+    private void checkForPersonalInfo(){
         if (password.contains(user.getFirst_name()) || password.contains(user.getLast_name())){
             this.containsPersonalInfo = true;
         }
