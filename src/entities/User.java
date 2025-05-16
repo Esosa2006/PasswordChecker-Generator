@@ -7,9 +7,9 @@ public class User {
     private String first_name;
     private String last_name;
     private String email;
-    private ArrayList<String> list_of_hobbies;
-    private ArrayList<String> schools;
-    private ArrayList<String> sports_teams;
+    private ArrayList<String> list_of_hobbies = new ArrayList<>();
+    private ArrayList<String> schools = new ArrayList<>();
+    private ArrayList<String> sports_teams = new ArrayList<>();
 
     public User() {
 

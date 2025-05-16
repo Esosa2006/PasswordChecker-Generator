@@ -13,11 +13,12 @@ public class RandomPasswordGenerator {
         StringBuilder password_builder = new StringBuilder();
         Random arrayNumber = new Random();
         Random arrayCharacter = new Random();
-        String[] symbols = {"~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "}", "[", "]", "|", ";", ":", "\"", ">", "<", ",", ".", "?", "/"};
+        String[] symbols = {"~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "+", "=", "{", "}", "[", "]", "|", ";", ":", "\"", ">", "<", ",", ".", "?", "/"};
         String[] lowercase = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-        String[] uppercase = new String[25];
+        String[] uppercase = new String[lowercase.length];
         int i = 0;
+        System.out.println(lowercase[0]);
         for (String letter : lowercase){
             String upper = letter.toUpperCase();
             uppercase[i] = upper;
