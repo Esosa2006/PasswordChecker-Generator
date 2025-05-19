@@ -98,14 +98,14 @@ public class PasswordStrengthChecker {
                 break;
             }
         }
-        for (String hobby : user.getSchools()){
-            if (password.contains(hobby)) {
+        for (String school : user.getSchools()){
+            if (password.contains(school)) {
                 this.containsPersonalInfo = true;
                 break;
             }
         }
-        for (String hobby : user.getSports_teams()){
-            if (password.contains(hobby)) {
+        for (String teams : user.getSports_teams()){
+            if (password.contains(teams)) {
                 this.containsPersonalInfo = true;
                 break;
             }
@@ -131,16 +131,11 @@ public class PasswordStrengthChecker {
         if (hasSymbols){ score += 1;}
         if (hasEnoughSymbols) {score += 1;}
 
-        if(score <= 2){
-            this.passwordStrength = Strength.WEAK;
-        }
-        else if (score <= 5){
-            this.passwordStrength = Strength.MEDIUM;
-        }
-        else{
-            this.passwordStrength = Strength.STRONG;
-        }
-        if(containsPersonalInfo){this.passwordStrength = Strength.WEAK; }
-
+        if(score <= 2){this.passwordStrength = Strength.WEAK;}
+        else if (score <= 5){this.passwordStrength = Strength.MEDIUM;}
+        else if (containsPersonalInfo){this.passwordStrength = Strength.WEAK;
+            System.out.println("Password contains your personal information");}
+        else{this.passwordStrength = Strength.STRONG;}
+//        if(containsPersonalInfo){this.passwordStrength = Strength.WEAK; }
     }
 }

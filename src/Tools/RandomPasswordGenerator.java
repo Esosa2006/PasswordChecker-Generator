@@ -1,5 +1,4 @@
 package Tools;
-
 import java.util.Random;
 
 public class RandomPasswordGenerator {
